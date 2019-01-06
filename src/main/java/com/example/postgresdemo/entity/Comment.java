@@ -2,6 +2,8 @@ package com.example.postgresdemo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -10,6 +12,10 @@ public class Comment {
     @Id
     @NotNull
     private String commentId;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private UserAndComment userAndComment;
 
     public String getCommentId() {
         return commentId;
