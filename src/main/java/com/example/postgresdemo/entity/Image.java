@@ -15,4 +15,8 @@ public class Image {
     @OneToOne
     @PrimaryKeyJoinColumn
     private UserAndImage userAndImage;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private CommentAndImage commentAndImage;
 }
