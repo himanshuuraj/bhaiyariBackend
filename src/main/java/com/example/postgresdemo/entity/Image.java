@@ -19,4 +19,8 @@ public class Image {
     @OneToOne
     @PrimaryKeyJoinColumn
     private CommentAndImage commentAndImage;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private PostAndImage postAndImage;
 }
