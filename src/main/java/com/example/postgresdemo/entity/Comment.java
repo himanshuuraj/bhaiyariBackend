@@ -17,6 +17,10 @@ public class Comment {
     @PrimaryKeyJoinColumn
     private UserAndComment userAndComment;
 
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private CommentAndPost commentAndPost;
+
     public String getCommentId() {
         return commentId;
     }
