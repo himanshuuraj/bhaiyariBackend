@@ -9,6 +9,7 @@ import com.example.postgresdemo.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import utils.UUIDClass;
 
 @RestController
 public class LoginController {
@@ -22,6 +23,7 @@ public class LoginController {
     public String getData(){
         UploadFileInS3 uploadFileInS3 = new UploadFileInS3();
         String data = uploadFileInS3.uploadFile("", "");
+        data += UUIDClass.getUUID("AR");
         return data;
     }
 
