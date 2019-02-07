@@ -1,5 +1,6 @@
 package com.example.postgresdemo.controller;
 
+import DtoRepository.UploadFileInS3;
 import com.example.postgresdemo.entity.Address;
 import com.example.postgresdemo.entity.AddressAndUserInfo;
 import com.example.postgresdemo.entity.UserInfo;
@@ -17,6 +18,12 @@ public class LoginController {
     @Autowired
     AddressRepository addressRepository;
 
+    @RequestMapping("/")
+    public String getData(){
+        UploadFileInS3 uploadFileInS3 = new UploadFileInS3();
+        String data = uploadFileInS3.uploadFile("", "");
+        return data;
+    }
 
     @RequestMapping("/insert")
     public String insertIntoDatabase(){
