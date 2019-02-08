@@ -1,5 +1,8 @@
 package com.example.postgresdemo.entity;
 
+import constants.USER_TYPE;
+import utils.UUIDClass;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -19,6 +22,57 @@ public class UserInfo {
     @PrimaryKeyJoinColumn
     private UserAndPost userAndPost;
 
+    public String name;
+
+    public String email;
+
+    public String phone;
+
+    public String gender;
+
+    public Boolean status = true;
+
+    public String userType = USER_TYPE.END_USER;
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public AddressAndUserInfo getAddressAndUserInfo() {
         return addressAndUserInfo;
@@ -37,10 +91,11 @@ public class UserInfo {
     }
 
     public String getUserId() {
-        return userId;
+        return UUIDClass.getUUID("US");
     }
 
     public void setUserId(String userId) {
+
         this.userId = userId;
     }
 
@@ -51,6 +106,4 @@ public class UserInfo {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String name;
 }

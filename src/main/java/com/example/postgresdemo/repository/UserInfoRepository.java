@@ -1,10 +1,9 @@
 package com.example.postgresdemo.repository;
 
-import com.example.postgresdemo.entity.AddressAndUserInfo;
+import com.example.postgresdemo.entity.UserInfo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface AddressAndUserInfoRepository extends CrudRepository<AddressAndUserInfo, String> {
+public interface UserInfoRepository extends CrudRepository<UserInfo, String> {
 }

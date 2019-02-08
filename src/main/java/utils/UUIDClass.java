@@ -14,7 +14,7 @@ public class UUIDClass {
        return uuid;
     }
 
-    public static void generateUUID(String string){
+    private static void generateUUID(String string){
 
         UUID uuid1 = Generators.timeBasedGenerator().generate();
         uuid = uuid1.toString();
