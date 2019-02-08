@@ -91,11 +91,11 @@ public class UserInfo {
     }
 
     public String getUserId() {
-        return UUIDClass.getUUID("US");
+        return userId;
     }
 
     public void setUserId(String userId) {
-
+        userId = UUIDClass.getUUID("US");
         this.userId = userId;
     }
 

@@ -6,6 +6,8 @@ import com.example.postgresdemo.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class UserInfoController {
 
@@ -43,6 +45,14 @@ public class UserInfoController {
         ResponseObject responseObject = new ResponseObject();
         UserInfo userInfo = userInfoService.deleteUser(userId);
         responseObject.setBody(userInfo);
+        return responseObject;
+    }
+
+    @GetMapping("/getAllUser/{pageNumber}")
+    public ResponseObject getUserList(@PathVariable int pageNumber){
+        ResponseObject responseObject = new ResponseObject();
+        List<UserInfo> userInfoList = userInfoService.getUserInfoList(pageNumber);
+        responseObject.setBody(userInfoList);
         return responseObject;
     }
 
