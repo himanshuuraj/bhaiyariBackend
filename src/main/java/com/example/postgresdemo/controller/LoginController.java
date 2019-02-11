@@ -38,10 +38,10 @@ public class LoginController {
         address.setLine1("line1");
 
         AddressAndUserInfo addressAndUserInfo = new AddressAndUserInfo();
-        addressAndUserInfo.setAddress(address);
-        addressAndUserInfo.setUserInfo(userInfo);
-        addressAndUserInfo.setAddressAndUserInfoId("1");
-        userAndAddressInfoRepository.save(addressAndUserInfo);
+        //addressAndUserInfo.setAddress(address);
+        //addressAndUserInfo.setUserInfo(userInfo);
+        //addressAndUserInfo.setAddressAndUserInfoId("1");
+        //userAndAddressInfoRepository.save(addressAndUserInfo);
         return "success";
     }
 

@@ -8,8 +8,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Address {
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
+    @ManyToOne
     private AddressAndUserInfo addressAndUserInfo;
 
     @Id
@@ -27,8 +26,12 @@ public class Address {
     private String pinCode;
 
     public String getAddressId() {
-        addressId = UUIDClass.getUUID("AD");
         return addressId;
+    }
+
+    public void setAddressId(String addressId){
+        addressId = UUIDClass.getUUID("AD");
+        this.addressId = addressId;
     }
 
     public String getLine1() {

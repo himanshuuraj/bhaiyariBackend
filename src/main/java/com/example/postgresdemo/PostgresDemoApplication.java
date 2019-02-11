@@ -19,19 +19,4 @@ public class PostgresDemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PostgresDemoApplication.class, args);
 	}
-
-	public void run(String... args) throws Exception{
-		UserInfo userInfo = new UserInfo();
-		userInfo.setName("name");
-
-		Address address = new Address();
-		address.setLine1("line1");
-
-		AddressAndUserInfo addressAndUserInfo = new AddressAndUserInfo();
-		addressAndUserInfo.setAddress(address);
-		addressAndUserInfo.setUserInfo(userInfo);
-
-		addressAndUserInfo.setAddressAndUserInfoId("1");
-		userAndAddressInfoRepository.save(addressAndUserInfo);
-	}
 }

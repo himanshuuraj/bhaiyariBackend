@@ -5,6 +5,7 @@ import utils.UUIDClass;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class UserInfo {
@@ -33,6 +34,9 @@ public class UserInfo {
     public Boolean status = true;
 
     public String userType = USER_TYPE.END_USER;
+
+    @OneToMany
+    public List<Address> addressList;
 
     public String getUserType() {
         return userType;
