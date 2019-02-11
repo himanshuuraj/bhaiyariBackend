@@ -16,27 +16,30 @@ public class UserInfo {
 
     @OneToOne
     @PrimaryKeyJoinColumn
-    private AddressAndUserInfo addressAndUserInfo;
-
-
-    @OneToOne
-    @PrimaryKeyJoinColumn
     private UserAndPost userAndPost;
 
-    public String name;
+    private String name;
 
-    public String email;
+    private String email;
 
-    public String phone;
+    private String phone;
 
-    public String gender;
+    private String gender;
 
-    public Boolean status = true;
+    private Boolean status = true;
 
-    public String userType = USER_TYPE.END_USER;
+    private String userType = USER_TYPE.END_USER;
 
-    @OneToMany
-    public List<Address> addressList;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Address> addressList;
+
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
 
     public String getUserType() {
         return userType;
@@ -76,14 +79,6 @@ public class UserInfo {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public AddressAndUserInfo getAddressAndUserInfo() {
-        return addressAndUserInfo;
-    }
-
-    public void setAddressAndUserInfo(AddressAndUserInfo addressAndUserInfo) {
-        this.addressAndUserInfo = addressAndUserInfo;
     }
 
     public UserAndPost getUserAndPost() {

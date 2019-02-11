@@ -2,9 +2,7 @@ package com.example.postgresdemo.controller;
 
 import DtoRepository.UploadFileInS3;
 import com.example.postgresdemo.entity.Address;
-import com.example.postgresdemo.entity.AddressAndUserInfo;
 import com.example.postgresdemo.entity.UserInfo;
-import com.example.postgresdemo.repository.UserAndAddressInfoRepository;
 import com.example.postgresdemo.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +12,6 @@ import utils.UUIDClass;
 @RestController
 public class LoginController {
 
-    @Autowired
-    UserAndAddressInfoRepository userAndAddressInfoRepository;
     @Autowired
     AddressRepository addressRepository;
 
@@ -37,7 +33,7 @@ public class LoginController {
         address.getAddressId();
         address.setLine1("line1");
 
-        AddressAndUserInfo addressAndUserInfo = new AddressAndUserInfo();
+        //AddressAndUserInfo addressAndUserInfo = new AddressAndUserInfo();
         //addressAndUserInfo.setAddress(address);
         //addressAndUserInfo.setUserInfo(userInfo);
         //addressAndUserInfo.setAddressAndUserInfoId("1");

@@ -22,6 +22,8 @@ public class UserInfoService {
 
     public UserInfo saveUser(UserInfo user){
         user.setUserId("");
+        if(user.getAddressList() != null)
+            user.getAddressList().forEach(item -> item.setAddressId(""));
         UserInfo userInfo = userInfoRepository.save(user);
         return userInfo;
     }

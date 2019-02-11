@@ -8,9 +8,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Address {
 
-    @ManyToOne
-    private AddressAndUserInfo addressAndUserInfo;
-
     @Id
     @NotNull
     private String addressId;
@@ -24,6 +21,17 @@ public class Address {
     private String state;
 
     private String pinCode;
+
+    @ManyToOne
+    private UserInfo userInfo;
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
 
     public String getAddressId() {
         return addressId;
