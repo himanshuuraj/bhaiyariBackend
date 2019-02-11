@@ -22,16 +22,16 @@ public class Address {
 
     private String pinCode;
 
-    @ManyToOne
-    private UserInfo userInfo;
-
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
-    }
+//    @ManyToOne
+//    private UserInfo userInfo;
+//
+//    public UserInfo getUserInfo() {
+//        return userInfo;
+//    }
+//
+//    public void setUserInfo(UserInfo userInfo) {
+//        this.userInfo = userInfo;
+//    }
 
     public String getAddressId() {
         return addressId;

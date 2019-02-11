@@ -1,5 +1,7 @@
 package com.example.postgresdemo.service;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.AbstractDynamoDBMapper;
+import com.example.postgresdemo.entity.Address;
 import com.example.postgresdemo.entity.UserInfo;
 import com.example.postgresdemo.repository.UserInfoRepository;
 import com.example.postgresdemo.response.ResponseObject;
@@ -7,7 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +21,7 @@ public class UserInfoService {
 
     @Autowired
     UserInfoRepository userInfoRepository;
+
     public UserInfo getUserById(String id){
         UserInfo userInfo = userInfoRepository.findById(id).orElse(new UserInfo());
         return userInfo;
@@ -23,7 +30,9 @@ public class UserInfoService {
     public UserInfo saveUser(UserInfo user){
         user.setUserId("");
         if(user.getAddressList() != null)
-            user.getAddressList().forEach(item -> item.setAddressId(""));
+            user.getAddressList().forEach(item -> {
+                item.setAddressId("");
+            });
         UserInfo userInfo = userInfoRepository.save(user);
         return userInfo;
     }
@@ -53,4 +62,17 @@ public class UserInfoService {
 //        List<UserInfo> list = (List<UserInfo>) userInfoRepository.findAll();
         return list;
     }
+
+    public Address saveAddress(String userId,Address address){
+
+        UserInfo userInfo = userInfoRepository.findById(userId).orElse(new UserInfo());
+        if(userInfo.getUserId() == null) return address;
+
+//        UserInfo userInfo = new UserInfo();
+//        userInfo.setUserId(userId);
+//        userInfo.setAddressList(new ArrayList<Address>(){
+//        });
+        return address;
+    }
+
 }

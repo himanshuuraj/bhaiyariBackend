@@ -1,5 +1,6 @@
 package com.example.postgresdemo.controller;
 
+import com.example.postgresdemo.entity.Address;
 import com.example.postgresdemo.entity.UserInfo;
 import com.example.postgresdemo.response.ResponseObject;
 import com.example.postgresdemo.service.UserInfoService;
@@ -53,6 +54,13 @@ public class UserInfoController {
         ResponseObject responseObject = new ResponseObject();
         List<UserInfo> userInfoList = userInfoService.getUserInfoList(pageNumber);
         responseObject.setBody(userInfoList);
+        return responseObject;
+    }
+
+    @PostMapping("/addAdress")
+    public ResponseObject updateResponse(@RequestBody Address address){
+        ResponseObject responseObject = new ResponseObject();
+        //userInfoService.
         return responseObject;
     }
 
