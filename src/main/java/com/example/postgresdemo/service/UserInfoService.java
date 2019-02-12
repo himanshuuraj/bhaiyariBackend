@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class UserInfoService {
     @Autowired
     UserInfoRepository userInfoRepository;
 
+    @Transactional
     public UserInfo getUserById(String id){
         UserInfo userInfo = userInfoRepository.findById(id).orElse(new UserInfo());
         return userInfo;
@@ -39,10 +41,11 @@ public class UserInfoService {
 
     public UserInfo updateUser(String userId, UserInfo user){
         UserInfo userInfo = userInfoRepository.findById(userId).orElse(new UserInfo());
-        userInfo.setName(user.getName());
-        userInfo.setEmail(user.getEmail());
-        userInfo.setPhone(user.getPhone());
-        userInfo.setGender(user.getGender());
+        user.setUserId(userInfo.getUserId());
+//        userInfo.setName(user.getName());
+//        userInfo.setEmail(user.getEmail());
+//        userInfo.setPhone(user.getPhone());
+//        userInfo.setGender(user.getGender());
         userInfoRepository.save(userInfo);
         return userInfo;
     }
@@ -50,6 +53,7 @@ public class UserInfoService {
     public UserInfo deleteUser(String userId){
         UserInfo userInfo = userInfoRepository.findById(userId).orElse(new UserInfo());
         userInfo.setStatus(false);
+        userInfo = userInfoRepository.save(userInfo);
         return userInfo;
     }
 

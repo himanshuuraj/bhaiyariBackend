@@ -1,6 +1,9 @@
 package com.example.postgresdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import constants.USER_TYPE;
+import org.hibernate.annotations.Proxy;
 import utils.UUIDClass;
 
 import javax.persistence.*;
@@ -30,7 +33,7 @@ public class UserInfo {
 
     private String userType = USER_TYPE.END_USER;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Address> addressList;
 
     public List<Address> getAddressList() {
