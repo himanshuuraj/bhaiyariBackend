@@ -17,10 +17,6 @@ public class UserInfo {
     @NotNull
     public String userId;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private UserAndPost userAndPost;
-
     private String name;
 
     private String email;
@@ -82,14 +78,6 @@ public class UserInfo {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public UserAndPost getUserAndPost() {
-        return userAndPost;
-    }
-
-    public void setUserAndPost(UserAndPost userAndPost) {
-        this.userAndPost = userAndPost;
     }
 
     public String getUserId() {

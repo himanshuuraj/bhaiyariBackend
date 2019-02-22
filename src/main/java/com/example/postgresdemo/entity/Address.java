@@ -25,7 +25,6 @@ public class Address {
 
     private String pinCode;
 
-
     @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private UserInfo userInfo;
 

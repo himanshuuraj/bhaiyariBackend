@@ -1,5 +1,7 @@
 package com.example.postgresdemo.entity;
 
+import utils.UUIDClass;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -12,15 +14,21 @@ public class Image {
 
     private String imageUrl;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private UserAndImage userAndImage;
+    public String getImageId() {
+        return imageId;
+    }
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private CommentAndImage commentAndImage;
+    public void setImageId(String imageId) {
+        imageId = UUIDClass.getUUID("IM");
+        this.imageId = imageId;
+    }
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private PostAndImage postAndImage;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 }

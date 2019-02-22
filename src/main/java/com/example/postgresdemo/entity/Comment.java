@@ -1,10 +1,8 @@
 package com.example.postgresdemo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class Comment {
@@ -13,13 +11,29 @@ public class Comment {
     @NotNull
     private String commentId;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private UserAndComment userAndComment;
+    private String text;
+
+    @OneToMany
+    private List<Comment> commentList;
 
     @OneToOne
-    @PrimaryKeyJoinColumn
-    private CommentAndPost commentAndPost;
+    private Image image;
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
 
     public String getCommentId() {
         return commentId;
@@ -36,7 +50,5 @@ public class Comment {
     public void setText(String text) {
         this.text = text;
     }
-
-    private String text;
 
 }

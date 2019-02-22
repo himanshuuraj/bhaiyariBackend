@@ -46,8 +46,8 @@ public class UserInfoService {
 //        userInfo.setEmail(user.getEmail());
 //        userInfo.setPhone(user.getPhone());
 //        userInfo.setGender(user.getGender());
-        userInfoRepository.save(userInfo);
-        return userInfo;
+        user = userInfoRepository.save(user);
+        return user;
     }
 
     public UserInfo deleteUser(String userId){

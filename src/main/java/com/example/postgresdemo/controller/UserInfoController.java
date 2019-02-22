@@ -33,7 +33,7 @@ public class UserInfoController {
         return responseObject;
     }
 
-    @PutMapping("/putUserInfo")
+    @PutMapping("/putUserInfo/{userId}")
     public ResponseObject putUserInfo(@PathVariable String userId, @RequestBody UserInfo userInfo){
         ResponseObject responseObject = new ResponseObject();
         UserInfo user = userInfoService.updateUser(userId, userInfo);
