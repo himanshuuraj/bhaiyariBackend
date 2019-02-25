@@ -32,6 +32,7 @@ public class UserInfo {
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Address> addressList;
 
+    @JsonIgnore
     public List<Address> getAddressList() {
         return addressList;
     }
