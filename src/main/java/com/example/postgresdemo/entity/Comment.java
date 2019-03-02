@@ -1,5 +1,7 @@
 package com.example.postgresdemo.entity;
 
+import utils.UUIDClass;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -13,7 +15,7 @@ public class Comment {
 
     private String text;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> commentList;
 
     @OneToOne
@@ -40,6 +42,7 @@ public class Comment {
     }
 
     public void setCommentId(String commentId) {
+        commentId = UUIDClass.getUUID("CO");
         this.commentId = commentId;
     }
 

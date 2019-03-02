@@ -1,5 +1,7 @@
 package com.example.postgresdemo.entity;
 
+import utils.UUIDClass;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,10 +15,10 @@ public class Post {
 
     private String text;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Image> imageList;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Comment> commentList;
 
     public String getPostId() {
@@ -24,6 +26,7 @@ public class Post {
     }
 
     public void setPostId(String postId) {
+        postId = UUIDClass.getUUID("PO");
         this.postId = postId;
     }
 
