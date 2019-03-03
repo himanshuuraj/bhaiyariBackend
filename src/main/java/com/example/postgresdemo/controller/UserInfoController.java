@@ -88,7 +88,7 @@ public class UserInfoController {
         return responseObject;
     }
 
-    @PostMapping("/addAdress")
+    @PostMapping("/addAddress")
     public ResponseObject updateResponse(@RequestBody Address address){
         ResponseObject responseObject = new ResponseObject();
         //userInfoService.
