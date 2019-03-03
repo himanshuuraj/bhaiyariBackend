@@ -41,13 +41,19 @@ public class UserInfoService {
 
     public UserInfo updateUser(String userId, UserInfo user){
         UserInfo userInfo = userInfoRepository.findById(userId).orElse(new UserInfo());
-        user.setUserId(userInfo.getUserId());
-//        userInfo.setName(user.getName());
-//        userInfo.setEmail(user.getEmail());
-//        userInfo.setPhone(user.getPhone());
-//        userInfo.setGender(user.getGender());
-        user = userInfoRepository.save(user);
-        return user;
+//        user.setUserId(userInfo.getUserId());
+        userInfo.setName(user.getName());
+        userInfo.setEmail(user.getEmail());
+        userInfo.setPhone(user.getPhone());
+        userInfo.setGender(user.getGender());
+//        user = userInfoRepository.save(user);
+        userInfo = userInfoRepository.save(userInfo);
+        return userInfo;
+    }
+
+    public UserInfo getUserInfoFromUsernameAndPassword(String email, String password){
+        List<UserInfo> userInfo = userInfoRepository.findByEmailAndPassword(email, password);
+        return userInfo.get(0);
     }
 
     public UserInfo deleteUser(String userId){
@@ -67,7 +73,7 @@ public class UserInfoService {
         return list;
     }
 
-    public Address saveAddress(String userId,Address address){
+    public Address saveAddress(String userId, Address address){
 
         UserInfo userInfo = userInfoRepository.findById(userId).orElse(new UserInfo());
         if(userInfo.getUserId() == null) return address;

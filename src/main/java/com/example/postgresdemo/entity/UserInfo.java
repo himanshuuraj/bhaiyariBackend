@@ -25,6 +25,16 @@ public class UserInfo {
 
     private String gender;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String password;
+
     private Boolean status = true;
 
     private String userType = USER_TYPE.END_USER;
@@ -32,7 +42,6 @@ public class UserInfo {
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Address> addressList;
 
-    @JsonIgnore
     public List<Address> getAddressList() {
         return addressList;
     }

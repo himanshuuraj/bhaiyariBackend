@@ -9,11 +9,42 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+class LoginObject{
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    String email;
+    String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+}
+
 @RestController
 public class UserInfoController {
 
     @Autowired
     UserInfoService userInfoService;
+
+    @PostMapping("/login")
+    public ResponseObject login(@RequestBody LoginObject loginObject) {
+        ResponseObject responseObject = new ResponseObject();
+        UserInfo userInfo = userInfoService.getUserInfoFromUsernameAndPassword(loginObject.getEmail(), loginObject.getPassword());
+        responseObject.setBody(userInfo);
+        return responseObject;
+    }
 
     @GetMapping("/getUserInfo/{id}")
     public ResponseObject getUserDetails(@PathVariable String id){
